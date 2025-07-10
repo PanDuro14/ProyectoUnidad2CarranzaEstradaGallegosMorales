@@ -42,7 +42,7 @@
         android:id="@+id/tv_matricula_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="220139 MARTINO 220476 220192"
+        android:text="220139 220190 220476 220192"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_no_device_connected"

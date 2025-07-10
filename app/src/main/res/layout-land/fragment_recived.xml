@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame_recived"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.RecivedData.RecivedFragment">
+
+    <!-- Contenedor principal para centrar todos los elementos -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- TextView que muestra el mensaje de "Esperando datos..." -->
+        <TextView
+            android:id="@+id/tv_data_rx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Data: Esperando datos..."
+            android:textSize="20sp" />
+
+        <!-- TextView adicional para mostrar "No hay dispositivo conectado" -->
+        <TextView
+            android:id="@+id/tv_no_device_connected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="No hay dispositivo conectado"
+            android:textSize="18sp"
+            android:textColor="@android:color/holo_red_dark"
+            android:visibility="gone"/>  <!-- Inicialmente oculto -->
+
+        <!-- TextView que muestra la matrícula -->
+        <TextView
+            android:id="@+id/tv_matricula_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="220139 220190 220476 220192"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

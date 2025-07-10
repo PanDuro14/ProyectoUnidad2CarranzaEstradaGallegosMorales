@@ -8,6 +8,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/purple_700"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/PopupThemeWhite"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <!-- Contenedor de fragmentos, arriba de los botones -->
     <FrameLayout
         android:id="@+id/fragment_container"
@@ -24,30 +33,45 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_boreded_devices"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Boreded" />
+            android:text="Boreded"
+            android:layout_margin="4dp"
+            app:cornerRadius="16dp"
+            app:backgroundTint="@color/purple_700"
+            android:textColor="@android:color/white" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_recived_data"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Recived" />
+            android:text="Recived"
+            android:layout_margin="4dp"
+            app:cornerRadius="16dp"
+            app:backgroundTint="@color/purple_700"
+            android:textColor="@android:color/white" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_send_data"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Send"/>
+            android:text="Send"
+            android:layout_margin="4dp"
+            app:cornerRadius="16dp"
+            app:backgroundTint="@color/purple_700"
+            android:textColor="@android:color/white" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

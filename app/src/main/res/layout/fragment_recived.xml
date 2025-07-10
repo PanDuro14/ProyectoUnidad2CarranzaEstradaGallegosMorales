@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.RecivedData.RecivedFragment">
 
+    <!-- TextView que muestra el mensaje de "Esperando datos..." -->
     <TextView
         android:id="@+id/tv_data_rx"
         android:layout_width="wrap_content"
@@ -21,5 +22,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- TextView adicional para mostrar "No hay dispositivo conectado" -->
+    <TextView
+        android:id="@+id/tv_no_device_connected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No hay dispositivo conectado"
+        android:textSize="18sp"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_data_rx"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="90dp"
+        android:visibility="gone"/>  <!-- Inicialmente oculto -->
+
+    <!-- TextView que muestra la matrícula -->
+    <TextView
+        android:id="@+id/tv_matricula_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="220139 MARTINO 220476 220192"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_no_device_connected"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="150dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

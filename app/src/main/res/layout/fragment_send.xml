@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frame_send"
@@ -11,51 +12,84 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/tv_last_status"
             android:layout_width="match_parent"
             android:layout_height="297dp"
             android:gravity="bottom|center"
-            android:text="Ultimo estado: 0"
+            android:text="Último estado: 0"
             android:textSize="24sp" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="155dp"
-            android:gravity="center|top"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="16dp">
 
 
-            <Button
+            <!-- Foco Rojo -->
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_1"
-                android:layout_width="wrap_content"
-                android:layout_height="150dp"
-                android:layout_weight="1"
-                android:text="Rojo" />
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:text=""
+                android:contentDescription="Foco Rojo"
+                app:cornerRadius="50dp"
+                app:backgroundTint="@android:color/holo_red_light"
+                android:elevation="8dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp" />
 
-            <Button
+            <!-- Foco Amarillo -->
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_2"
-                android:layout_width="wrap_content"
-                android:layout_height="150dp"
-                android:layout_weight="1"
-                android:text="Amarillo" />
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:text=""
+                android:contentDescription="Foco Amarillo"
+                app:cornerRadius="50dp"
+                app:backgroundTint="@android:color/holo_orange_light"
+                android:elevation="8dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp" />
 
-            <Button
+            <!-- Foco Verde -->
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_3"
-                android:layout_width="wrap_content"
-                android:layout_height="150dp"
-                android:layout_weight="1"
-                android:text="Verde" />
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:text=""
+                android:contentDescription="Foco Verde"
+                app:cornerRadius="50dp"
+                app:backgroundTint="@android:color/holo_green_light"
+                android:elevation="8dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp" />
         </LinearLayout>
 
         <Button
             android:id="@+id/btn_4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Apagar" />
+            android:layout_marginTop="16dp"
+            android:text="Apagar"
+            app:cornerRadius="16dp"
+            app:backgroundTint="@color/purple_700"
+            android:textColor="@android:color/white"/>
 
     </LinearLayout>
 

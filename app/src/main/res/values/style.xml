@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tema base de la aplicación -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Configuraciones generales -->
+    </style>
+
+    <!-- Tema para el menú desplegable -->
+    <style name="PopupThemeWhite" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColor">#FFFFFFFF</item>
+    </style>
+</resources>

@@ -45,24 +45,27 @@ public class RecivedFragment extends Fragment {
             Boolean isConnected = sharedViewModel.getIsConnected().getValue();
 
             // Si está conectado a un dispositivo
-            if(Boolean.TRUE.equals(isConnected) && data != null && !data.isEmpty()){
+            if (Boolean.TRUE.equals(isConnected)) {
                 int humedad = sharedViewModel.getHum().getValue();
                 int temperatura = sharedViewModel.getTemp().getValue();
 
-                String info = "Temperatura: " + temperatura  +" C Humedad: " + humedad + "%";
+                String info = "Temperatura: " + temperatura + " C Humedad: " + humedad + "%";
                 Log.d("Información", "onCreateView: " + info);
 
-                binding.tvDataRx.setText("Temperatura: " + temperatura  +" C Humedad: " + humedad + "%");
+                binding.tvDataRx.setText("Temperatura: " + temperatura + " C Humedad: " + humedad + "%");
 
                 // Ocultar el mensaje de "No hay dispositivo conectado"
                 binding.tvNoDeviceConnected.setVisibility(View.GONE);
-            } else {
-                binding.tvDataRx.setText("Esperando datos...");
 
+            } else {
+                // Si no se reciben datos, mostrar el mensaje de espera
+                binding.tvDataRx.setText("Esperando datos...");
                 // Mostrar el mensaje de "No hay dispositivo conectado"
                 binding.tvNoDeviceConnected.setVisibility(View.VISIBLE);
             }
         });
+
         return view;
     }
+
 }

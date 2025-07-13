@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.example.proyectounidad2carranzaestradagallegosmorales.MainActivity;
 import com.example.proyectounidad2carranzaestradagallegosmorales.SharedViewModel;
 import com.example.proyectounidad2carranzaestradagallegosmorales.databinding.FragmentBorededBinding;
 
@@ -25,11 +26,11 @@ public class  BorededFragment extends Fragment {
     private FragmentBorededBinding binding;
     private SharedViewModel sharedViewModel;
     private BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+    Integer currentFragment = 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @RequiresPermission(Manifest.permission.BLUETOOTH_CONNECT)
@@ -40,6 +41,7 @@ public class  BorededFragment extends Fragment {
         View view = binding.getRoot();
 
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+        sharedViewModel.setCurrentFragment(currentFragment);
 
         // Mapear la información al recibirla
         ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1);
@@ -63,6 +65,16 @@ public class  BorededFragment extends Fragment {
             sharedViewModel.setDeviceAddress(deviceAddress);
         })));
 
+        //enviarMensaje(sharedViewModel.getCurrentFragment().getValue().toString());
+
         return view;
+    }
+
+    private void enviarMensaje(String mensaje){
+        mensaje = mensaje.trim();
+        if(!mensaje.isEmpty()){
+            ((MainActivity) requireActivity()).enviarDatosBT(mensaje);
+
+        }
     }
 }

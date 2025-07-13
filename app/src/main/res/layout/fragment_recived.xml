@@ -28,25 +28,45 @@
         android:id="@+id/tv_no_device_connected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No hay dispositivo conectado"
-        android:textSize="18sp"
-        android:textColor="@android:color/holo_red_dark"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_data_rx"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="90dp"
-        android:visibility="gone"/>  <!-- Inicialmente oculto -->
+        android:text="No hay dispositivo conectado"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_data_rx" />  <!-- Inicialmente oculto -->
 
     <!-- TextView que muestra la matrícula -->
     <TextView
         android:id="@+id/tv_matricula_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
         android:text="220139 220190 220476 220192"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_no_device_connected"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="150dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_no_device_connected" />
+
+    <Button
+        android:id="@+id/btn_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="113dp"
+        android:layout_marginBottom="141dp"
+        android:text="Temp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/hum_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="104dp"
+        android:layout_marginBottom="141dp"
+        android:text="Hum"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

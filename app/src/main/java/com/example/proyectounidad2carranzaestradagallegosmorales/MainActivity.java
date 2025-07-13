@@ -25,6 +25,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.proyectounidad2carranzaestradagallegosmorales.databinding.ActivityMainBinding;
 import com.example.proyectounidad2carranzaestradagallegosmorales.ui.BorededDevices.BorededFragment;
+import com.example.proyectounidad2carranzaestradagallegosmorales.ui.FotoResistenciaData.FotoResistenciaDataFragment;
 import com.example.proyectounidad2carranzaestradagallegosmorales.ui.RecivedData.RecivedFragment;
 import com.example.proyectounidad2carranzaestradagallegosmorales.ui.SendData.SendFragment;
 
@@ -97,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
         binding.btnBorededDevices.setOnClickListener(v -> showFragment(new BorededFragment()));
         binding.btnRecivedData.setOnClickListener(v -> showFragment(new RecivedFragment()));
         binding.btnSendData.setOnClickListener(v -> showFragment(new SendFragment()));
+        binding.btnLdr.setOnClickListener(v -> showFragment(new FotoResistenciaDataFragment()));
 
         // Hadler para manejar la lectura de datos bluetooth
         bluetoothIn = new Handler() {
@@ -107,41 +109,9 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("Datos", "handleMessage: " + receivedData);
 
                     sharedViewModel.setDataIn(receivedData);
-
-                    // Procesamos los datos directamente sin acumular demasiados datos
-                    String[] parts = receivedData.trim().split(" ");
-                    if (parts.length >= 4) {
-                        // Extraemos humedad y temperatura de los datos procesados
-                        String humedad = parts[1].trim();  // Eliminamos espacios o tabulaciones alrededor de la humedad
-                        String temperatura = parts[3].trim();  // Eliminamos espacios o tabulaciones alrededor de la temperatura
-
-                        //Log.d("Datos", "Humedad extraída: " + humedad);
-                        //Log.d("Datos", "Temperatura extraída: " + temperatura);
-
-                        // Solo actualizamos el ViewModel si los datos son válidos
-                        if (humedad != null && !humedad.isEmpty() && temperatura != null && !temperatura.isEmpty()) {
-                            try {
-                                // Usar Float.parseFloat para manejar valores decimales
-                                float humedadValor = Float.parseFloat(humedad.replace("%", "")); // Eliminamos "%" en humedad
-                                float temperaturaValor = Float.parseFloat(temperatura.replace("C", "")); // Eliminamos "C" en temperatura
-
-                                // Solo actualizamos si los valores son válidos
-                                sharedViewModel.setHum((int) humedadValor);  // Si es necesario, puedes redondear
-                                sharedViewModel.setTemp((int) temperaturaValor);  // Lo mismo para la temperatura
-
-
-                            } catch (NumberFormatException e) {
-                                Log.e("SharedViewModel", "Error al parsear los valores de humedad o temperatura", e);
-                            }
-                        }
-                    }
                 }
             }
         };
-
-
-
-
 
         sharedViewModel.getDeviceAddress().observe(this, new Observer<String>() {
             @SuppressLint("MissingPermission")

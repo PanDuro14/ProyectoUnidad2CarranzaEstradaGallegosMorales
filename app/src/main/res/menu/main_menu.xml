@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_bonded"
+        android:title="Bonded"
+        android:orderInCategory="100" />
+
+    <item
+        android:id="@+id/menu_received"
+        android:title="Received"
+        android:orderInCategory="101" />
+
+    <item
+        android:id="@+id/menu_send"
+        android:title="Send"
+        android:orderInCategory="102" />
+
+    <item
+        android:id="@+id/menu_ldr"
+        android:title="LDR"
+        android:orderInCategory="103"/>
+
+</menu>

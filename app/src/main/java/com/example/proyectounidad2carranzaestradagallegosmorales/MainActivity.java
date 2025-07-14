@@ -7,6 +7,8 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.view.Menu;
+import android.view.MenuItem;  // <-- Añade este import
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -18,7 +20,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresPermission;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -28,6 +29,7 @@ import com.example.proyectounidad2carranzaestradagallegosmorales.ui.BorededDevic
 import com.example.proyectounidad2carranzaestradagallegosmorales.ui.FotoResistenciaData.FotoResistenciaDataFragment;
 import com.example.proyectounidad2carranzaestradagallegosmorales.ui.RecivedData.RecivedFragment;
 import com.example.proyectounidad2carranzaestradagallegosmorales.ui.SendData.SendFragment;
+
 
 import java.io.IOException;
 import java.util.UUID;
@@ -61,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
         // Inicalizar el sharedVIewModel y el bluetooth
         sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -83,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+        setSupportActionBar(binding.toolbar);
 
         // Instancia del fragmento
         if(savedInstanceState == null){
@@ -91,8 +96,6 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.fragment_container, new BorededFragment())
                     .commit();
         }
-        // Setup Tool Bar
-        setupToolbar();
 
         // Botones de navegación
         binding.btnBorededDevices.setOnClickListener(v -> showFragment(new BorededFragment()));
@@ -152,16 +155,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void setupToolbar() {
-        Toolbar toolbar = binding.toolbar;
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayShowTitleEnabled(true);
-            // Color morado para el fondo
-            toolbar.setBackgroundColor(getResources().getColor(R.color.purple_500));
-        }
-    }
-
     private void showFragment(Fragment fragment){
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment)
                 .addToBackStack(null).commit();
@@ -201,6 +194,32 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Aqui es para mostrar el menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu); // nuevo archivo
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.menu_bonded) {
+            showFragment(new BorededFragment());
+            return true;
+        } else if (id == R.id.menu_received) {
+            showFragment(new RecivedFragment());
+            return true;
+        } else if (id == R.id.menu_send) {
+            showFragment(new SendFragment());
+            return true;
+        }else if (id == R.id.menu_ldr) {
+            showFragment(new FotoResistenciaDataFragment());
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onPause() {
@@ -225,6 +244,8 @@ public class MainActivity extends AppCompatActivity {
     private BluetoothSocket createBluetoothSocket(@NonNull BluetoothDevice device) throws IOException{
         return device.createRfcommSocketToServiceRecord(BTMODULEUUID);
     }
+
+
 
 
     // Enviar información al fragmento

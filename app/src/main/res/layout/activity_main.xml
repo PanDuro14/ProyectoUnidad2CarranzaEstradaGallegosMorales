@@ -17,6 +17,7 @@
         app:popupTheme="@style/PopupThemeWhite"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <!-- Contenedor de fragmentos, arriba de los botones -->
     <FrameLayout
         android:id="@+id/fragment_container"
